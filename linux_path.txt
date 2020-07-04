@@ -1,0 +1,7 @@
+﻿预测文件绝对路径：--此行不可修改
+/media/bruce/Skills/linux_win/text_classifier/datas/inputfiles/
+
+预测结果保存绝对路径：--此行不可修改
+/media/bruce/Skills/linux_win/text_classifier/datas/results/
+预测模型选择路径：--此行不可修改
+/media/bruce/Skills/linux_win/text_classifier/datas/model/cate=993/

@@ -1,0 +1,42 @@
+fasttext文本分类方法介绍
+
+fasttext是facebook开源的一个词向量与文本分类工具，在2016年开源，典型应用场景是“带监督的文本分类问题”。提供简单而高效的文本分类和表征学习的方法，性能比肩深度学习而且速度更快。
+
+fasttext有监督学习分类步骤：
+1.要求文本存储格式。
+__label__G250,伴随信息时代的到来,学术交流方式不断发生变化,越来越多原创性的最新学术成果发表在开放获取的数字出版平台上.同时,更多的学者在科学研究和学术交流过程中应用社会网络工具与同行进行学术探讨,替代计量学作为学术评估的新方式逐步兴起,在科研评价领域发挥着日益重要的作用
+__label__G265,博物馆是一个特殊的公共空间,它要求能给参观者带来强有力的诗意、震颤和惊异体验.民族志实践表明,诗意、震颤和惊异体验,正是他者眼光对异文化进行关照的结果.以人类学的他者眼光来进行审视,从最早的奇珍室到当代博物馆再到当下新博物馆学理念指导下的生态博物馆,蕴含着一门充满活力的博物馆空间诗学
+
+label是前缀，label后接的为类别
+2.训练模型
+windows下安装fasttext,训练代码如下
+import fastText.FastText as ff
+#训练模型
+classifier=ff.train_supervised(level_3_train.txt',lr=0.1,loss='hs',wordNgrams=2,epoch=100)
+#保存模型
+model = classifier.save_model(fastText_classifier.model')
+#模型评估
+result = classifier.test(level_3_train.txt')
+print(result)
+
+3.参数说明
+默认参数
+The following arguments are optional:
+  -lr                 learning rate [0.1]
+  -lrUpdateRate       change the rate of updates for the learning rate [100]
+  -dim                size of word vectors [100]
+  -ws                 size of the context window [5]
+  -epoch              number of epochs [5]
+  -minCount           minimal number of word occurences [1]
+  -minCountLabel      minimal number of label occurences [0]
+  -neg                number of negatives sampled [5]
+  -wordNgrams         max length of word ngram [1]
+  -loss               loss function {ns, hs, softmax} [ns]
+  -bucket             number of buckets [2000000]
+  -minn               min length of char ngram [0]
+  -maxn               max length of char ngram [0]
+  -thread             number of threads [12]
+  -t                  sampling threshold [0.0001]
+  -label              labels prefix [__label__]
+  -verbose            verbosity level [2]
+  -pretrainedVectors  pretrained word vectors for supervised learning []
